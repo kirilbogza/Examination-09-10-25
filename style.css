@@ -85,13 +85,13 @@ nav {
 
 /* Theme */
 
-.container-theme {
+.container-themes {
   display: flex;
   gap: 10px;
   justify-content: center;
 }
 
-.container-theme button {
+.container-themes button {
   border: none;
   height: 50px;
   width: auto;

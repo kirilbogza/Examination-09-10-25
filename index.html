@@ -16,17 +16,19 @@
         <button id="hamburger">☰</button>
         <div id="nav-links">
           <a href="#">Home</a>
-          <a href="#">Search</a>
+          <a href="#">?Search?</a>
           <a href="#">Library</a>
         </div>
       </nav>
+
     </header>
+    
     <main>
       <a href="#main" class="skip-link">Skip to main content</a>
 
       <!-- Themes -->
 
-      <div class="container-theme">
+      <div class="container-themes">
         <button>Fantasy</button>
         <button>Sci-Fi</button>
         <button>Romance</button>
@@ -35,11 +37,11 @@
       <!-- Carousel -->
 
       <div class="container-carousel">
+        <button onclick="previousDiv()"><</button>
+        <button onclick="nextDiv()">></button>
         <div id="carousel-1"></div>
         <div id="carousel-2"></div>
         <div id="carousel-3"></div>
-        <button onclick="previousDiv()"><</button>
-        <button onclick="nextDiv()">></button>
       </div>
 
       <!-- Explore -->
@@ -50,8 +52,11 @@
         <button onclick="scrollRightBooks()" id="scroll-right">></button>
         <div id="containerExplore" class="container-explore"></div>
       </div>
+
     </main>
+
     <footer>nextpage.se</footer>
     <script src="script.js"></script>
+    
   </body>
 </html>
