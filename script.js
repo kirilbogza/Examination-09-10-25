@@ -44,19 +44,18 @@ const displayBooksCarousel = async () => {
   const books = await getBooks();
 
   for (let i = 0; i < 3 && i < books.length; i++) {
-    const book = books[i]
+    const book = books[i];
     const image = book.image;
 
     const bookContainer = document.createElement("div");
 
     const bookImage = document.createElement("img");
     bookImage.src = image;
-    bookContainer.classList.add("item")
+    bookContainer.classList.add("item");
     bookContainer.appendChild(bookImage);
     carousel1.appendChild(bookContainer.cloneNode(true));
     carousel2.appendChild(bookContainer.cloneNode(true));
     carousel3.appendChild(bookContainer.cloneNode(true));
-
   }
 };
 
@@ -72,11 +71,11 @@ const scrollRightBooks = () => {
 };
 
 const nextDiv = () => {
-  const itemWidth = container-carousel.getElementById('carousel').offsetWidth;
-  container-carousel.scrollBy({ left: itemWidth, behavior: 'smooth' });
-}
+  const itemWidth = container - carousel.getElementById("carousel").offsetWidth;
+  container - carousel.scrollBy({ left: itemWidth, behavior: "smooth" });
+};
 
 const previousDiv = () => {
-  const itemWidth = container-carousel.getElementById('carousel').offsetWidth;
-  container-carousel.scrollBy({ left: -itemWidth, behavior: 'smooth' });
-}
+  const itemWidth = container - carousel.getElementById("carousel").offsetWidth;
+  container - carousel.scrollBy({ left: -itemWidth, behavior: "smooth" });
+};
