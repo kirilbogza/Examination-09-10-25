@@ -1,5 +1,4 @@
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("nav-links");
+// API
 
 const API_URL = "https://www.dbooks.org/api/recent";
 
@@ -59,8 +58,7 @@ const displayBooksCarousel = async () => {
   }
 };
 
-displayBooks();
-displayBooksCarousel();
+// Buttons
 
 const scrollLeftBooks = () => {
   containerExplore.scrollBy({ left: -300, behavior: "smooth" });
@@ -79,3 +77,11 @@ const previousDiv = () => {
   const itemWidth = container - carousel.getElementById("carousel").offsetWidth;
   container - carousel.scrollBy({ left: -itemWidth, behavior: "smooth" });
 };
+
+// Other functionality
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+displayBooks();
+displayBooksCarousel();

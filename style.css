@@ -4,13 +4,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
-  overflow-x: hidden;
-  width: 100%;
   background-color: #dcdada;
 }
 
@@ -42,6 +36,10 @@ main div {
 
 /* Navbar */
 
+h1 {
+  font-size: 40px;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -50,7 +48,6 @@ nav {
   color: white;
   padding: 10px 20px;
   font-size: 30px;
-  background-color: bisque;
   margin: 0;
 }
 
@@ -63,7 +60,6 @@ nav {
 
 #nav-links a {
   color: rgb(244, 251, 251);
-  text-decoration: none;
   margin-left: 60px;
 }
 
@@ -78,7 +74,7 @@ nav {
 
 /* Hamburger */
 
-.hamburger {
+#hamburger {
   font-size: 24px;
   background: none;
   border: none;
