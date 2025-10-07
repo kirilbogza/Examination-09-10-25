@@ -2,7 +2,7 @@
 
 const API_URL = "https://www.dbooks.org/api/recent";
 
-const containerExplore = document.getElementById("containerExplore");
+const containerExplore = document.getElementById("boxExplore");
 const carousel1 = document.getElementById("carousel-1");
 const carousel2 = document.getElementById("carousel-2");
 const carousel3 = document.getElementById("carousel-3");

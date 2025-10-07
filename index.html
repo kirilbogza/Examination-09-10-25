@@ -8,6 +8,7 @@
   </head>
   <body>
     <header>
+      <a href="#main" class="skip-link">Skip to main content</a>
 
       <!-- Navbar -->
 
@@ -20,12 +21,9 @@
           <a href="#">Library</a>
         </div>
       </nav>
-
     </header>
-    
-    <main>
-      <a href="#main" class="skip-link">Skip to main content</a>
 
+    <main>
       <!-- Themes -->
 
       <div class="container-themes">
@@ -38,7 +36,7 @@
 
       <div class="container-carousel">
         <button onclick="previousDiv()"><</button>
-        <button onclick="nextDiv()">></button>
+        <button onclick="nextDiv()" id="next-div">></button>
         <div id="carousel-1"></div>
         <div id="carousel-2"></div>
         <div id="carousel-3"></div>
@@ -47,16 +45,13 @@
       <!-- Explore -->
 
       <h2>Explore</h2>
-      <div class="container-button">
-        <button onclick="scrollLeftBooks()" id="scroll-left"><</button>
+      <div class="container-explore">
+        <button onclick="scrollLeftBooks()"><</button>
         <button onclick="scrollRightBooks()" id="scroll-right">></button>
-        <div id="containerExplore" class="container-explore"></div>
+        <div id="boxExplore" class="box-explore"></div>
       </div>
-
     </main>
-
-    <footer>nextpage.se</footer>
     <script src="script.js"></script>
-    
+    <footer>nextpage.se</footer>
   </body>
 </html>

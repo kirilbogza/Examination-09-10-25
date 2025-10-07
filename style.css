@@ -1,17 +1,20 @@
 * {
   margin: 0px;
-  box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
   background-color: #dcdada;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 0 20px;
+  flex: 1;
 }
 
 main div {
@@ -48,7 +51,6 @@ nav {
   color: white;
   padding: 10px 20px;
   font-size: 30px;
-  margin: 0;
 }
 
 #nav-links {
@@ -94,7 +96,6 @@ nav {
 .container-themes button {
   border: none;
   height: 50px;
-  width: auto;
   border-radius: 5px;
 }
 
@@ -103,9 +104,25 @@ nav {
 .container-carousel {
   display: flex;
   justify-content: center;
-  position: absolute;
+  /* position: absolute; */
   gap: 10px;
-  left: -30%;
+}
+
+.container-carousel button {
+  position: absolute;
+  height: 80%;
+  width: 20%;
+  color: white;
+  font-size: 50px;
+  font-weight: bolder;
+  background: none;
+  border: none;
+  -webkit-text-stroke: 1px black;
+  opacity: 0.8;
+}
+
+#next-div {
+  right: 5px;
 }
 
 .container-carousel div {
@@ -120,19 +137,19 @@ nav {
 
 /* Explore */
 
-.container-explore h3 {
+.box-explore h3 {
   text-align: center;
 }
 
-.container-button {
+.container-explore {
   position: relative;
 }
 
-.container-button button {
+.container-explore button {
   display: none;
 }
 
-.container-explore {
+.box-explore {
   display: flex;
   gap: 20px;
   scroll-behavior: smooth;
@@ -169,15 +186,18 @@ footer {
   color: white;
   text-align: center;
   padding: 5px;
-  margin-top: 535px;
 }
 
 @media screen and (min-width: 768px) {
+  .skip-link {
+    display: block;
+  }
+
   .container-explore {
     overflow-x: hidden;
   }
 
-  .container-button button {
+  .container-explore button {
     position: absolute;
     height: 80%;
     width: 20%;
