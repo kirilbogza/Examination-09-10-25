@@ -19,7 +19,7 @@ const getBooks = async () => {
   return books;
 };
 
-const displayBooks = async () => {
+const displayBooksExplore = async () => { //Randomize
   const books = await getBooks();
 
   for (const book of books) {
@@ -39,7 +39,7 @@ const displayBooks = async () => {
   }
 };
 
-const displayBooksCarousel = async () => {
+const displayBooksExploreCarousel = async () => {
   const books = await getBooks();
 
   for (let i = 0; i < 3 && i < books.length; i++) {
@@ -60,6 +60,16 @@ const displayBooksCarousel = async () => {
 
 // Buttons
 
+const nextDiv = () => {
+  const carousel = document.querySelector('.container-carousel');
+  carousel.scrollBy({ left: carousel.offsetWidth, behavior: 'smooth' });
+};
+
+const previousDiv = () => {
+  const carousel = document.querySelector('.container-carousel');
+  carousel.scrollBy({ left: -carousel.offsetWidth, behavior: 'smooth' });
+};
+
 const scrollLeftBooks = () => {
   containerExplore.scrollBy({ left: -300, behavior: "smooth" });
 };
@@ -68,20 +78,20 @@ const scrollRightBooks = () => {
   containerExplore.scrollBy({ left: 300, behavior: "smooth" });
 };
 
-const nextDiv = () => {
-  const itemWidth = container - carousel.getElementById("carousel").offsetWidth;
-  container - carousel.scrollBy({ left: itemWidth, behavior: "smooth" });
-};
-
-const previousDiv = () => {
-  const itemWidth = container - carousel.getElementById("carousel").offsetWidth;
-  container - carousel.scrollBy({ left: -itemWidth, behavior: "smooth" });
-};
-
 // Other functionality
 
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("nav-links");
 
-displayBooks();
-displayBooksCarousel();
+displayBooksExplore();
+displayBooksExploreCarousel();
+
+
+
+
+
+
+
+
+
+
