@@ -1,20 +1,5 @@
 // API
-<<<<<<< Updated upstream
 
-
-// Buttons
-
-const nextDiv = () => {
-  const carousel = document.querySelector('.container-carousel');
-  carousel.scrollBy({ left: carousel.offsetWidth, behavior: 'smooth' });
-};
-
-const previousDiv = () => {
-  const carousel = document.querySelector('.container-carousel');
-  carousel.scrollBy({ left: -carousel.offsetWidth, behavior: 'smooth' });
-};
-
-=======
 const API_KEY = "8ad64df3c0mshd5b7a83a018b82dp1d79bajsn9530cc086a66"
 const API_URL = "https://www.dbooks.org/api/recent";
 
@@ -95,7 +80,6 @@ const previousDiv = () => {
   carousel.scrollBy({ left: -carousel.offsetWidth, behavior: 'smooth' });
 };
 
->>>>>>> Stashed changes
 const scrollLeftBooks = () => {
   containerExplore.scrollBy({ left: -300, behavior: "smooth" });
 };
