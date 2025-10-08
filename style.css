@@ -92,7 +92,7 @@ nav {
   overflow: hidden;
 }
 
-.container-carousel {
+.container-themes {
   display: flex;
   height: 400px;
   justify-content: flex-start;
@@ -102,7 +102,7 @@ nav {
   height: 100%;
 }
 
-.container-carousel div {
+.container-themes div {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -110,7 +110,7 @@ nav {
   margin: auto;
 }
 
-.container-carousel div img {
+.container-themes div img {
   height: 200px;
 }
 
