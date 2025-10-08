@@ -3,69 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Next Page – Discover Your Next Read</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
-      <nav class="navbar">
-        <div class="logo">Next.Page</div>
-        <button class="hamburger" id="hamburger">☰</button>
+      <a href="#main" class="skip-link">Skip to main content</a>
+
+      <!-- Navbar -->
+
+      <nav>
+        <h1>Next Page</h1>
+        <button id="hamburger">☰</button>
         <div id="nav-links">
           <a href="#">Home</a>
-          <a href="#">Search</a>
+          <a href="#">?Search?</a>
           <a href="#">Library</a>
         </div>
       </nav>
     </header>
+
     <main>
 
-      <a href="#main" class="skip-link">Skip to main content</a>
       <!-- Themes -->
-      <div class="container-theme">
-        <button>Fantasy</button>
-        <button>Sci-Fi</button>
-        <button>Romance</button>
-      </div>
-      <!-- Carousel -->
-      <div class="container-carousel">
-        <div id="carousel-1"></div>
-        <div id="carousel-2"></div>
-        <div id="carousel-3"></div>
-        <button onclick="previousDiv()"><</button>
-        <button onclick="nextDiv()">></button>
-      </div>
-      <!-- Explore -->
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-      <h2>Explore</h2>
+
+      <h2>Themes</h2>
       <div class="container-button">
-        <button onclick="scrollLeftBooks()" id="scroll-left"><</button>
+        <button onclick="previousDiv()"><</button>
+        <button onclick="nextDiv()" id="next-div">></button>
+        <div class="container-themes">
+          <div id="carousel-1"></div>
+          <div id="carousel-2"></div>
+          <div id="carousel-3"></div>
+        </div>
+      </div>
+
+      <!-- Explore -->
+
+      <h2>Explore</h2>
+      <div class="container-explore container-button">
+        <button onclick="scrollLeftBooks()"><</button>
         <button onclick="scrollRightBooks()" id="scroll-right">></button>
-        <div id="containerExplore" class="container-explore"></div>
+        <div id="boxExplore" class="box-explore"></div>
       </div>
     </main>
-    <footer></footer>
     <script src="script.js"></script>
+    <footer>nextpage.se</footer>
   </body>
 </html>
