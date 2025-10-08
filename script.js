@@ -42,20 +42,26 @@ const displayBooksExplore = async () => { //Randomize
 const displayBooksExploreCarousel = async () => {
   const books = await getBooks();
 
+  let books1 = []
+  let books2 = []
+  let books3 = []
+
   for (let i = 0; i < 3 && i < books.length; i++) {
     const book = books[i];
     const image = book.image;
 
     const bookContainer = document.createElement("div");
-
     const bookImage = document.createElement("img");
+    
     bookImage.src = image;
     bookContainer.classList.add("item");
     bookContainer.appendChild(bookImage);
+
     carousel1.appendChild(bookContainer.cloneNode(true));
     carousel2.appendChild(bookContainer.cloneNode(true));
     carousel3.appendChild(bookContainer.cloneNode(true));
   }
+
 };
 
 // Buttons

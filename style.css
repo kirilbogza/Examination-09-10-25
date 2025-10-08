@@ -85,20 +85,6 @@ nav {
   display: block;
 }
 
-/* Theme */
-
-.container-themes {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.container-themes button {
-  border: none;
-  height: 50px;
-  border-radius: 5px;
-}
-
 /* Carousel */
 
 .container-button {
@@ -109,7 +95,7 @@ nav {
 .container-carousel {
   display: flex;
   height: 400px;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 100px;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -118,11 +104,9 @@ nav {
 
 .container-carousel div {
   display: flex;
-  /* flex: 0 0 100%; */
   flex-direction: row;
-  gap: 10px;
+  gap: 20px;
   background-color: gray;
-  scroll-behavior: smooth;
   margin: auto;
 }
 
