@@ -22,10 +22,9 @@ const getBooks = async () => {
   return books;
 };
 
-getBooks()
+// getBooks()
 
 const getBooksExplore = async () => {
-  //Randomize
   const books = await getBooks();
 
   for (const book of books) {
@@ -44,31 +43,25 @@ const getBooksExplore = async () => {
     boxExplore.appendChild(bookContainer);
   }
 };
-
 getBooksExplore()
+
+getBooksThemes()
 
 const displayBooksExploreCarousel = async () => {
   const books = await getBooks();
 
   let books1 = [];
-  let books2;
-
-  for (let i = 0; i < 3 && i < books.length; i++) {
-    const book = books[i];
-    const image = book.image;
+  let books2 = [];
+  let books3 = [];
 
     const bookContainer = document.createElement("div");
     const bookImage = document.createElement("img");
+    // 
 
     bookImage.src = image;
     bookContainer.classList.add("item");
     bookContainer.appendChild(bookImage);
-
-    carousel1.appendChild(bookContainer.cloneNode(true));
-    carousel2.appendChild(bookContainer.cloneNode(true));
-    carousel3.appendChild(bookContainer.cloneNode(true));
   }
-};
 
 // Buttons
 
