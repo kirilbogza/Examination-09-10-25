@@ -3,3 +3,5 @@
 Projects goal is to build a library-website for reading and introducing users to various books.
 
 Two main project objectives is to build a website using knowledge gained in the introduction course as well as adapting the website for accessibility.
+
+To use the webpage, clone the repository and run the index.html file in your browser.
