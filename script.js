@@ -115,3 +115,32 @@ const scrollRightBooks = () => {
 
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("nav-links");
+
+
+
+const navLinksList = document.querySelectorAll("#nav-links a");
+
+navLinksList.forEach(link => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // Scrolla smidigt till sektionen
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      // Lägg till highlight
+      targetElement.classList.add("highlight");
+
+      // Ta bort highlight efter 2 sekunder
+      setTimeout(() => {
+        targetElement.classList.remove("highlight");
+      }, 2000);
+
+      // Dölj dropdownmenyn
+      navLinks.classList.remove("active");
+    }
+  });
+});
