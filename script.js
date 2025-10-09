@@ -52,12 +52,38 @@ const getDisplayBooks = async () => {
       // Window with text
       const bookWindow = window.open("", "_blank");
       bookWindow.document.write(`
-        <html>
-          <body>
-            <button onclick="window.close()">Close</button>
-            <div>${data.text}</div>
-          </body>
-        </html>
+<html>
+        <head>
+          <style>
+            body { 
+            font-family: Arial;
+            margin: 20px;
+            background: #f5f5f5;
+            }
+            button {
+            padding: 10px 20px;
+            background: #973838;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            }
+            div {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            max-height: 80vh;
+            overflow-y: auto;
+            }
+         </style>
+       </head>
+       <body>
+         <button onclick="window.close()">Close</button>
+       <div>${data.text}</div>
+       </body>
+     </html>
       `);
     };
   }
