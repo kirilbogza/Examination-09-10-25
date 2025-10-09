@@ -7,10 +7,10 @@ git branch lost connection med remote
 */
 
 const boxExplore = document.getElementById("boxExplore");
-const bookContent = document.getElementById("bookContent");
-const themeBox1 = document.getElementById("theme-box-1");
-const themeBox2 = document.getElementById("theme-box-2");
-const themeBox3 = document.getElementById("theme-box-3");
+// const bookContent = document.getElementById("bookContent");
+// const themeBox1 = document.getElementById("theme-box-1");
+// const themeBox2 = document.getElementById("theme-box-2");
+// const themeBox3 = document.getElementById("theme-box-3");
 
 // API
 
