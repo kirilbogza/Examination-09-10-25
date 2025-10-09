@@ -6,7 +6,7 @@ const themeBox3 = document.getElementById("theme-box-3");
 
 // API
 
-const API_KEY = "8ad64df3c0mshd5b7a83a018b82dp1d79bajsn9530cc086a66";
+const API_KEY = "98a2f8979cmsh1e4f528f183d725p134240jsn1d1d818bfc5c";
 const API_URL =
   "https://project-gutenberg-free-books-api1.p.rapidapi.com/books";
 
