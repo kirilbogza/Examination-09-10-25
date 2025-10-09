@@ -23,6 +23,14 @@ const getDisplayBooks = async () => {
   const parsedResponse = await response.json();
   const books = parsedResponse.results;
 
+  const book1 = books[0]
+  // const book2 = books[1]
+  // const book3 = books[2]
+  
+  const bookImage = document.createElement("img")
+  bookImage.src = book1.cover_image  
+  themeBox1.appendChild(bookImage)
+
   for (const book of books) {
     const bookContainer = document.createElement("div");
     const bookImage = document.createElement("img");
