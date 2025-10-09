@@ -13,7 +13,6 @@ const API_URL =
 // getBooks
 
 const getDisplayBooks = async () => {
-  // Fetch
 
   const response = await fetch(API_URL, {
     headers: {
@@ -24,24 +23,23 @@ const getDisplayBooks = async () => {
   const parsedResponse = await response.json();
   const books = parsedResponse.results;
 
-  // Display books
   for (const book of books) {
     const bookContainer = document.createElement("div");
     const bookImage = document.createElement("img");
-    bookImage.src = book.cover_image;
     const bookTitle = document.createElement("h3");
+    bookImage.src = book.cover_image;
     bookTitle.textContent = book.title;
 
     bookContainer.appendChild(bookImage);
     bookContainer.appendChild(bookTitle);
     boxExplore.appendChild(bookContainer);
 
-    // Clickable
 
     bookContainer.style.cursor = "pointer";
     bookContainer.onclick = async function () {
-      // Get book text
-      const response = await fetch(
+      
+
+    const response = await fetch(
         `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${book.id}/text?cleaning_mode=simple`,
         {
           headers: { "x-rapidapi-key": API_KEY },
@@ -49,10 +47,9 @@ const getDisplayBooks = async () => {
       );
       const data = await response.json();
 
-      // Window with text
       const bookWindow = window.open("", "_blank");
       bookWindow.document.write(`
-<html>
+      <html>
         <head>
           <style>
             body { 
@@ -83,7 +80,7 @@ const getDisplayBooks = async () => {
          <button onclick="window.close()">Close</button>
        <div>${data.text}</div>
        </body>
-     </html>
+      </html>
       `);
     };
   }
@@ -93,15 +90,15 @@ getDisplayBooks();
 
 // Buttons
 
-const nextDiv = () => {
-  const carousel = document.querySelector(".container-carousel");
-  carousel.scrollBy({ left: carousel.offsetWidth, behavior: "smooth" });
-};
+// const nextDiv = () => {
+//   const carousel = document.querySelector(".container-carousel");
+//   carousel.scrollBy({ left: carousel.offsetWidth, behavior: "smooth" });
+// };
 
-const previousDiv = () => {
-  const carousel = document.querySelector(".container-carousel");
-  carousel.scrollBy({ left: -carousel.offsetWidth, behavior: "smooth" });
-};
+// const previousDiv = () => {
+//   const carousel = document.querySelector(".container-carousel");
+//   carousel.scrollBy({ left: -carousel.offsetWidth, behavior: "smooth" });
+// };
 
 const scrollLeftBooks = () => {
   boxExplore.scrollBy({ left: -300, behavior: "smooth" });
