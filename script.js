@@ -1,3 +1,11 @@
+/*
+API anslutning
+rätt api fetch länk
+button följer med diven när scrollar ner
+texten är huller om buller
+git branch lost connection med remote
+*/
+
 const boxExplore = document.getElementById("boxExplore");
 const bookContent = document.getElementById("bookContent");
 const themeBox1 = document.getElementById("theme-box-1");
@@ -23,13 +31,13 @@ const getDisplayBooks = async () => {
   const parsedResponse = await response.json();
   const books = parsedResponse.results;
 
-  const book1 = books[0]
+  // const book1 = books[0]
   // const book2 = books[1]
   // const book3 = books[2]
   
-  const bookImage = document.createElement("img")
-  bookImage.src = book1.cover_image  
-  themeBox1.appendChild(bookImage)
+  // const bookImage = document.createElement("img")
+  // bookImage.src = book1.cover_image  
+  // themeBox1.appendChild(bookImage)
 
   for (const book of books) {
     const bookContainer = document.createElement("div");
@@ -46,7 +54,6 @@ const getDisplayBooks = async () => {
     bookContainer.style.cursor = "pointer";
     bookContainer.onclick = async function () {
       
-
     const response = await fetch(
         `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${book.id}/text?cleaning_mode=simple`,
         {
@@ -86,7 +93,7 @@ const getDisplayBooks = async () => {
        </head>
        <body>
          <button onclick="window.close()">Close</button>
-       <div>${data.text}</div>
+         <div>${data.text}</div>
        </body>
       </html>
       `);
