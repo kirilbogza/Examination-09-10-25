@@ -1,9 +1,5 @@
 /*
-API anslutning
-rätt api fetch länk
-button följer med diven när scrollar ner
-texten är huller om buller
-git branch lost connection med remote
+
 */
 
 const boxExplore = document.getElementById("boxExplore");
@@ -148,3 +144,4 @@ const scrollRightBooks = () => {
 //     }
 //   });
 // });
+
