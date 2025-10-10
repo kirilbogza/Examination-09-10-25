@@ -1,23 +1,10 @@
-/*
-
-*/
-
 const boxExplore = document.getElementById("boxExplore");
-// const bookContent = document.getElementById("bookContent");
-// const themeBox1 = document.getElementById("theme-box-1");
-// const themeBox2 = document.getElementById("theme-box-2");
-// const themeBox3 = document.getElementById("theme-box-3");
-
-// API
 
 const API_KEY = "98a2f8979cmsh1e4f528f183d725p134240jsn1d1d818bfc5c";
 const API_URL =
   "https://project-gutenberg-free-books-api1.p.rapidapi.com/books";
 
-// getBooks
-
-const getDisplayBooks = async () => {
-
+async function getBooks() {
   const response = await fetch(API_URL, {
     headers: {
       "x-rapidapi-key": API_KEY,
@@ -38,11 +25,9 @@ const getDisplayBooks = async () => {
     bookContainer.appendChild(bookTitle);
     boxExplore.appendChild(bookContainer);
 
-
     bookContainer.style.cursor = "pointer";
     bookContainer.onclick = async function () {
-      
-    const response = await fetch(
+      const response = await fetch(
         `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${book.id}/text?cleaning_mode=simple`,
         {
           headers: { "x-rapidapi-key": API_KEY },
@@ -87,21 +72,9 @@ const getDisplayBooks = async () => {
       `);
     };
   }
-};
+}
 
-getDisplayBooks();
-
-// Buttons
-
-// const nextDiv = () => {
-//   const carousel = document.querySelector(".container-carousel");
-//   carousel.scrollBy({ left: carousel.offsetWidth, behavior: "smooth" });
-// };
-
-// const previousDiv = () => {
-//   const carousel = document.querySelector(".container-carousel");
-//   carousel.scrollBy({ left: -carousel.offsetWidth, behavior: "smooth" });
-// };
+getBooks();
 
 const scrollLeftBooks = () => {
   boxExplore.scrollBy({ left: -300, behavior: "smooth" });
@@ -111,37 +84,32 @@ const scrollRightBooks = () => {
   boxExplore.scrollBy({ left: 300, behavior: "smooth" });
 };
 
-// Other functionality
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
 
-// const hamburger = document.getElementById("hamburger");
-// const navLinks = document.getElementById("nav-links");
+const navLinksList = document.querySelectorAll("#nav-links a");
 
+navLinksList.forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
 
+    const targetId = this.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
 
-// const navLinksList = document.querySelectorAll("#nav-links a");
+    if (targetElement) {
+      // Scrolla smidigt till sektionen
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
 
-// navLinksList.forEach(link => {
-//   link.addEventListener("click", function(e) {
-//     e.preventDefault();
+      // Lägg till highlight
+      targetElement.classList.add("highlight");
 
-//     const targetId = this.getAttribute("href").substring(1);
-//     const targetElement = document.getElementById(targetId);
+      // Ta bort highlight efter 2 sekunder
+      setTimeout(() => {
+        targetElement.classList.remove("highlight");
+      }, 2000);
 
-//     if (targetElement) {
-//       // Scrolla smidigt till sektionen
-//       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-
-//       // Lägg till highlight
-//       targetElement.classList.add("highlight");
-
-//       // Ta bort highlight efter 2 sekunder
-//       setTimeout(() => {
-//         targetElement.classList.remove("highlight");
-//       }, 2000);
-
-//       // Dölj dropdownmenyn
-//       navLinks.classList.remove("active");
-//     }
-//   });
-// });
-
+      // Dölj dropdownmenyn
+      navLinks.classList.remove("active");
+    }
+  });
+});
