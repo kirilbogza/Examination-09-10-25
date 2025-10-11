@@ -1,19 +1,10 @@
 const boxExplore = document.getElementById("boxExplore");
-const bookContent = document.getElementById("bookContent");
-const themeBox1 = document.getElementById("theme-box-1");
-const themeBox2 = document.getElementById("theme-box-2");
-const themeBox3 = document.getElementById("theme-box-3");
-
-// API
 
 const API_KEY = "98a2f8979cmsh1e4f528f183d725p134240jsn1d1d818bfc5c";
 const API_URL =
   "https://project-gutenberg-free-books-api1.p.rapidapi.com/books";
 
-// getBooks
-
-const getDisplayBooks = async () => {
-
+async function getBooks() {
   const response = await fetch(API_URL, {
     headers: {
       "x-rapidapi-key": API_KEY,
@@ -22,6 +13,12 @@ const getDisplayBooks = async () => {
 
   const parsedResponse = await response.json();
   const books = parsedResponse.results;
+  return books;
+}
+
+async function displayBooks() {
+  const books = await getBooks();
+  const containers = [];
 
   for (const book of books) {
     const bookContainer = document.createElement("div");
@@ -33,92 +30,54 @@ const getDisplayBooks = async () => {
     bookContainer.appendChild(bookImage);
     bookContainer.appendChild(bookTitle);
     boxExplore.appendChild(bookContainer);
+    containers.push(bookContainer);
+  }
+  return containers;
+}
 
+async function bookClick() {
+  const books = await getBooks();
+  const containers = await displayBooks();
 
-    bookContainer.style.cursor = "pointer";
-    bookContainer.onclick = async function () {
-      
+  for (let i = 0; i < containers.length; i++) {
+    const container = containers[i];
+    const book = books[i];
 
-    const response = await fetch(
+    container.style.cursor = "pointer";
+
+    container.onclick = async function () {
+      const textPromise = await fetch(
         `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${book.id}/text?cleaning_mode=simple`,
         {
           headers: { "x-rapidapi-key": API_KEY },
         }
       );
-      const data = await response.json();
 
-      const bookWindow = window.open("", "_blank");
-      bookWindow.document.write(`
-      <html>
-        <head>
-          <style>
-            body { 
-            font-family: Arial;
-            margin: 20px;
-            background: #f5f5f5;
-            }
-            button {
-            padding: 10px 20px;
-            background: #973838;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 20px;
-            }
-            div {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            max-height: 80vh;
-            overflow-y: auto;
-            }
-         </style>
-       </head>
-       <body>
-         <button onclick="window.close()">Close</button>
-       <div>${data.text}</div>
-       </body>
-      </html>
-      `);
+      const data = await textPromise.json();
+
+      localStorage.setItem("bookText", data.text);
+      window.open("book.html", "_blank");
     };
   }
-};
+}
 
-getDisplayBooks();
+bookClick();
 
-// Buttons
-
-// const nextDiv = () => {
-//   const carousel = document.querySelector(".container-carousel");
-//   carousel.scrollBy({ left: carousel.offsetWidth, behavior: "smooth" });
+// const scrollLeftBooks = () => {
+//   boxExplore.scrollBy({ left: -300, behavior: "smooth" });
 // };
 
-// const previousDiv = () => {
-//   const carousel = document.querySelector(".container-carousel");
-//   carousel.scrollBy({ left: -carousel.offsetWidth, behavior: "smooth" });
+// const scrollRightBooks = () => {
+//   boxExplore.scrollBy({ left: 300, behavior: "smooth" });
 // };
-
-const scrollLeftBooks = () => {
-  boxExplore.scrollBy({ left: -300, behavior: "smooth" });
-};
-
-const scrollRightBooks = () => {
-  boxExplore.scrollBy({ left: 300, behavior: "smooth" });
-};
-
-// Other functionality
 
 // const hamburger = document.getElementById("hamburger");
 // const navLinks = document.getElementById("nav-links");
 
-
-
 // const navLinksList = document.querySelectorAll("#nav-links a");
 
-// navLinksList.forEach(link => {
-//   link.addEventListener("click", function(e) {
+// navLinksList.forEach((link) => {
+//   link.addEventListener("click", function (e) {
 //     e.preventDefault();
 
 //     const targetId = this.getAttribute("href").substring(1);
