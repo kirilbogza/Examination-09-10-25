@@ -37,21 +37,21 @@ async function displayBooks() {
 }
 
 async function bookClick() {
-  console.log(containers)
+  const containers = await displayBooks();
+
   for (const container of containers) {
     container.style.cursor = "pointer";
-  }
-  bookContainer.onclick = async function () {
-    const response = await fetch(
-      `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${book.id}/text?cleaning_mode=simple`,
-      {
-        headers: { "x-rapidapi-key": API_KEY },
-      }
-    );
-    const data = await response.json();
+    container.onclick = async function () {
+      const response = await fetch(
+        `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${container.id}/text?cleaning_mode=simple`,
+        {
+          headers: { "x-rapidapi-key": API_KEY },
+        }
+      );
+      const data = await response.json();
 
-    const bookWindow = window.open("", "_blank");
-    bookWindow.document.write(`
+      const bookWindow = window.open("", "_blank");
+      bookWindow.document.write(`
       <html>
         <head>
           <style>
@@ -85,10 +85,10 @@ async function bookClick() {
        </body>
       </html>
       `);
-  };
+    };
+  }
 }
 
-displayBooks();
 bookClick();
 
 // const scrollLeftBooks = () => {
