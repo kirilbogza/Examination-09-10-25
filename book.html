@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Book</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Viewer</title>
+    <link rel="stylesheet" href="book.css" />
   </head>
   <body>
-    <button onclick="goBack()">Back</button>
+    <button onclick="window.close()">Close</button>
+    <div id="bookContent"></div>
+
+    <script>
+      const bookText = localStorage.getItem("bookText");
+      document.getElementById("bookContent").textContent = bookText;
+    </script>
   </body>
 </html>

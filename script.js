@@ -37,54 +37,27 @@ async function displayBooks() {
 }
 
 async function bookClick() {
+  const books = await getBooks();
   const containers = await displayBooks();
 
-  for (const container of containers) {
+  for (let i = 0; i < containers.length; i++) {
+    const container = containers[i];
+    const book = books[i];
+
     container.style.cursor = "pointer";
+
     container.onclick = async function () {
-      const response = await fetch(
-        `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${container.id}/text?cleaning_mode=simple`,
+      const textPromise = await fetch(
+        `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${book.id}/text?cleaning_mode=simple`,
         {
           headers: { "x-rapidapi-key": API_KEY },
         }
       );
-      const data = await response.json();
 
-      const bookWindow = window.open("", "_blank");
-      bookWindow.document.write(`
-      <html>
-        <head>
-          <style>
-            body { 
-            font-family: Arial;
-            margin: 20px;
-            background: #f5f5f5;
-            }
-            button {
-            padding: 10px 20px;
-            background: #973838;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 20px;
-            }
-            div {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            max-height: 80vh;
-            overflow-y: auto;
-            }
-         </style>
-       </head>
-       <body>
-         <button onclick="window.close()">Close</button>
-         <div>${data.text}</div>
-       </body>
-      </html>
-      `);
+      const data = await textPromise.json();
+
+      localStorage.setItem("bookText", data.text);
+      window.open("book.html", "_blank");
     };
   }
 }
