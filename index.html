@@ -9,12 +9,15 @@
   <body>
     <header>
       <a href="#main" class="skip-link">Skip to main content</a>
-
       <!-- Navbar -->
       <nav>
         <h1>Next Page</h1>
         <div class="nav-menu">
-        <button id="hamburger" aria-label="toggle navigation menu">☰</button>
+          <button id="hamburger" aria-label="toggle navigation menu">☰</button>
+        </div>
+        <div id="nav-links">
+          <a href="#feed">Feed</a>
+          <a href="#explore">Explore</a>
         </div>
         <div id="nav-links">
           <a href="#collections">Collections</a>
@@ -22,34 +25,20 @@
         </div>
         </nav>
     </header>
-
     <main>
-
-      <!-- Themes -->
-
-      <!-- <h2>Themes</h2>
-      <div class="container-button">
-        <!-- <button onclick="previousDiv()"><</button>
-        <button onclick="nextDiv()" id="next-div">></button> -->
-        <div class="container-themes">
-          <div id="theme-box-1"></div>
-          <div id="theme-box-2"></div>
-          <div id="theme-box-3"></div>
-        </div>
-      </div> -->
-
+      <!-- Feed -->
+      <div>
+        <h2 id="Feed">Feed</h2>
+      </div>
+      <h3 class="h3-feed">Start your journey with:</h3>
+      <div class="container-feed" id="containerFeed"></div>
       <!-- Explore -->
-
-      <h2>Explore</h2>
+      <h2 id="Explore">Explore</h2>
       <div class="container-explore">
         <button onclick="scrollLeftBooks()"><</button>
         <button onclick="scrollRightBooks()" id="scroll-right">></button>
         <div id="boxExplore" class="box-explore"></div>
       </div>
-
-      <!-- Book Content -->
-
-      <div id="bookContent"></div>
     </main>
     <script src="script.js"></script>
     <footer>nextpage.se</footer>

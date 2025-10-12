@@ -1,6 +1,7 @@
 const boxExplore = document.getElementById("boxExplore");
+const containerFeed = document.getElementById("containerFeed");
 
-const API_KEY = "98a2f8979cmsh1e4f528f183d725p134240jsn1d1d818bfc5c";
+const API_KEY = "5734ab48e9mshf26bca6a6b91ff5p159558jsna2026a798088";
 const API_URL =
   "https://project-gutenberg-free-books-api1.p.rapidapi.com/books";
 
@@ -20,15 +21,53 @@ async function displayBooks() {
   const books = await getBooks();
   const containers = [];
 
-  for (const book of books) {
+  const clonedBooks = [...books];
+
+  const shuffled = books.sort(() => Math.random() - 0.5);
+  const selectedBooks = shuffled.slice(0, 1);
+
+  // Feed
+  for (const book of selectedBooks) {
     const bookContainer = document.createElement("div");
     const bookImage = document.createElement("img");
     const bookTitle = document.createElement("h3");
+
     bookImage.src = book.cover_image;
+    bookImage.alt = book.title || "Book cover";
     bookTitle.textContent = book.title;
 
     bookContainer.appendChild(bookImage);
     bookContainer.appendChild(bookTitle);
+
+    containerFeed.appendChild(bookContainer);
+
+    bookContainer.style.cursor = "pointer";
+    bookContainer.onclick = async function () {
+      const response = await fetch(
+        `https://project-gutenberg-free-books-api1.p.rapidapi.com/books/${book.id}/text?cleaning_mode=simple`,
+        {
+          headers: { "x-rapidapi-key": API_KEY },
+        }
+      );
+      const data = await response.json();
+      localStorage.setItem("bookText", data.text);
+      window.open("book.html", "_blank");
+    };
+  }
+
+  // Explore
+  for (const book of clonedBooks) {
+    const bookContainer = document.createElement("div");
+    const bookImage = document.createElement("img");
+    const bookTitle = document.createElement("h3");
+
+    bookImage.src = book.cover_image;
+    bookImage.alt = book.title || "Book cover";
+    bookTitle.textContent = book.title;
+
+    bookContainer.appendChild(bookImage);
+    bookContainer.appendChild(bookTitle);
+
     boxExplore.appendChild(bookContainer);
     containers.push(bookContainer);
   }
@@ -63,40 +102,24 @@ async function bookClick() {
 
 bookClick();
 
-// const scrollLeftBooks = () => {
-//   boxExplore.scrollBy({ left: -300, behavior: "smooth" });
-// };
+const scrollLeftBooks = () => boxExplore.scrollBy({ left:-300, behavior:"smooth" });
+const scrollRightBooks = () => boxExplore.scrollBy({ left:300, behavior:"smooth" });
 
-// const scrollRightBooks = () => {
-//   boxExplore.scrollBy({ left: 300, behavior: "smooth" });
-// };
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
 
-// const hamburger = document.getElementById("hamburger");
-// const navLinks = document.getElementById("nav-links");
 
-// const navLinksList = document.querySelectorAll("#nav-links a");
+const links = navLinks.querySelectorAll("a");
 
-// navLinksList.forEach((link) => {
-//   link.addEventListener("click", function (e) {
-//     e.preventDefault();
+hamburger.addEventListener("click", () => navLinks.classList.toggle("show"));
 
-//     const targetId = this.getAttribute("href").substring(1);
-//     const targetElement = document.getElementById(targetId);
-
-//     if (targetElement) {
-//       // Scrolla smidigt till sektionen
-//       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-
-//       // Lägg till highlight
-//       targetElement.classList.add("highlight");
-
-//       // Ta bort highlight efter 2 sekunder
-//       setTimeout(() => {
-//         targetElement.classList.remove("highlight");
-//       }, 2000);
-
-//       // Dölj dropdownmenyn
-//       navLinks.classList.remove("active");
-//     }
-//   });
-// });
+links.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    links.forEach(l => l.classList.remove("active"));
+    link.classList.add("active");
+    navLinks.classList.remove("show");
+    const target = document.querySelector(link.getAttribute("href"));
+    target?.scrollIntoView({behavior:"smooth"});
+  });
+});
